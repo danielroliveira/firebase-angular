@@ -1,0 +1,12 @@
+<mat-list-item (click)="executeAction('selectTarefa')">
+
+  <p matLine>{{ tarefa.titulo }}</p>
+
+  <span matLine [style.color]="prioridadeColor">{{ descricao }}</span>
+    
+  <mat-slide-toggle
+    [checked]="tarefa.feito" 
+    (click)="executeAction('performTarefa'); $event.stopPropagation()">
+  </mat-slide-toggle>
+
+</mat-list-item>

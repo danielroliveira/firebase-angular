@@ -1,0 +1,48 @@
+<mat-spinner 
+  class="sppiner" 
+  diameter="50" 
+  strokeWidth="3" 
+  *ngIf="loading">
+</mat-spinner>
+
+<mat-nav-list>
+  <app-tarefa-item *ngFor="let tarefa of tarefas$ | async" 
+    [tarefa]="tarefa"
+    [prioridades]="prioridades" 
+    (performTarefa)="onPerformTarefa($event)" 
+    (selectTarefa)="selectTarefa=$event"
+    [matMenuTriggerFor]="menu"
+    [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
+  </app-tarefa-item>
+</mat-nav-list>
+
+<mat-menu #menu="matMenu" overlapTrigger="false">
+  <ng-template matMenuContent let-tarefa="tarefaToUpdateOrDelete">
+
+    <button mat-menu-item (click)="showDialog(tarefa)">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+
+    <button mat-menu-item (click)="onDelete(tarefa)">
+      <mat-icon>delete</mat-icon>
+      <span>Remover</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [matMenuTriggerFor]="itensPrioridade">Prioridade</button>
+
+    <mat-menu #itensPrioridade="matMenu">
+      <button mat-menu-item
+        (click)="alteraPrioridade(prioridade.value, tarefa)"
+        *ngFor="let prioridade of prioridades">{{ prioridade.descricao }}
+      </button>
+    </mat-menu>
+
+  </ng-template>
+</mat-menu>
+
+<button mat-fab class="fab-botton-right" (click)="showDialog()">
+  <mat-icon>add</mat-icon>
+</button>

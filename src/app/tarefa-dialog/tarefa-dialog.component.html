@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>{{ dialogTitulo }}</h1>
+
+<mat-dialog-content>
+    <mat-form-field>
+      <input 
+      type="text"
+      placeholder="Titulo" 
+      matInput
+      [(ngModel)]="tarefa.titulo"
+      (keyup.enter)="onSave()"
+      required
+      minlength="3"
+      #txtTitulo="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Prioridade" 
+        [(ngModel)]="tarefa.prioridade" 
+        required 
+        #cmbPrioridade="ngModel">
+        
+        <mat-option *ngFor="let prioridade of prioridades" [value]="prioridade.value">
+          {{ prioridade.descricao }}
+        </mat-option>
+
+      </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [disabled]="txtTitulo.invalid || cmbPrioridade.invalid" (click)="onSave()">Salvar</button>
+</mat-dialog-actions>

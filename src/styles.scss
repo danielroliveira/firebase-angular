@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    margin: 0px;
+    font-family: Roboto, monospace
+}
+
+.fab-botton-right{
+    position: fixed !important;
+    right: 15px;
+    bottom: 15px;
+}
+
+.sppiner {
+    margin: 30px auto 0 auto;
+}
