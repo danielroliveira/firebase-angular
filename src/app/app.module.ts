@@ -25,13 +25,15 @@ import {
 import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
 import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaDialogComponent } from './tarefa-dialog/tarefa-dialog.component';
+import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TarefaItemComponent,
     TarefaListComponent,
-    TarefaDialogComponent
+    TarefaDialogComponent,
+    BarraSuperiorComponent
   ],
   entryComponents: [
     TarefaDialogComponent

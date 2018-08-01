@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "angular-firebase"
+  "defaultProject": "angular-firebase",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

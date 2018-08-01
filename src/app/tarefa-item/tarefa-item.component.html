@@ -2,7 +2,7 @@
 
   <p matLine>{{ tarefa.titulo }}</p>
 
-  <span matLine [style.color]="prioridadeColor">{{ descricao }}</span>
+  <span matLine class="tarefaItemDescricao" [style.color]="prioridadeColor">{{ descricao }}</span>
     
   <mat-slide-toggle
     [checked]="tarefa.feito" 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs';
 import { take } from '../../../node_modules/rxjs/operators'
 
@@ -12,7 +12,7 @@ import { Prioridade } from '../models/prioridade.model';
 @Component({
   selector: 'app-tarefa-list',
   templateUrl: './tarefa-list.component.html',
-  styleUrls: ['./tarefa-list.component.css']
+  styleUrls: ['./tarefa-list.component.scss']
 })
 export class TarefaListComponent implements OnInit {
 
@@ -20,6 +20,8 @@ export class TarefaListComponent implements OnInit {
   selectedTarefa: Tarefa;
   loading = true;
   prioridades: Prioridade[];
+  
+  @ViewChild('barraSuperior') barraSuperior
 
   constructor(
     private tarefaService: TarefaService,
@@ -56,8 +58,7 @@ export class TarefaListComponent implements OnInit {
       tarefa.prioridade = newPrioridade;
       this.tarefaService.update(tarefa);
     }
-    //console.log(newPrioridade)
-    //console.log(tarefa)
+
   }
 
 }

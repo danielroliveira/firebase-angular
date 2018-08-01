@@ -6,7 +6,7 @@ import { Prioridade } from '../models/prioridade.model';
 @Component({
   selector: 'app-tarefa-item',
   templateUrl: './tarefa-item.component.html',
-  styleUrls: ['./tarefa-item.component.css']
+  styleUrls: ['./tarefa-item.component.scss']
 })
 export class TarefaItemComponent implements OnInit {
 

@@ -15,3 +15,32 @@ html, body {
 .sppiner {
     margin: 30px auto 0 auto;
 }
+
+.fill-remaining-space{
+    /* This fills the remaining space, by using flexbox. 
+   Every toolbar row uses a flexbox row layout. */
+flex: 1 1 auto;
+}
+
+.texto-menor{
+  font-size: 0.8em;
+}
+
+.listagem {
+  padding-bottom: 7vh;
+}
+
+.barraSuperior {
+    height: 8vh;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.tarefaItemDescricao {
+    padding-left: 3vw;
+}

@@ -1,10 +1,5 @@
-<mat-toolbar color="primary" class="mat-elevation-z2">
-  <span>Tarefas</span>
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
-  <span class="texto-menor">Daniel e Gissela</span>
-</mat-toolbar>
+<app-barra-superior (navHeight)=OnNavHeight($event)></app-barra-superior>  
 
-<div class="listagem">
+<div #listagem class="listagem">
   <app-tarefa-list></app-tarefa-list>
 </div>

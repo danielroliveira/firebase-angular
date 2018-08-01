@@ -5,7 +5,7 @@
   *ngIf="loading">
 </mat-spinner>
 
-<mat-nav-list>
+<mat-nav-list class="listagem">
   <app-tarefa-item *ngFor="let tarefa of tarefas$ | async" 
     [tarefa]="tarefa"
     [prioridades]="prioridades" 

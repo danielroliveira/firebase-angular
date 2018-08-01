@@ -8,7 +8,7 @@ import { Prioridade } from '../models/prioridade.model';
 @Component({
   selector: 'app-tarefa-dialog',
   templateUrl: './tarefa-dialog.component.html',
-  styleUrls: ['./tarefa-dialog.component.css']
+  styleUrls: ['./tarefa-dialog.component.scss']
 })
 export class TarefaDialogComponent implements OnInit {
 
