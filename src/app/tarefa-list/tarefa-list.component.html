@@ -6,7 +6,9 @@
 </mat-spinner>
 
 <mat-nav-list class="listagem">
-  <app-tarefa-item *ngFor="let tarefa of tarefas$ | async" 
+  <h2 mat-subheader style="background-color: rgb(219, 229, 243)">TAREFAS A FAZER</h2>
+       
+  <app-tarefa-item *ngFor="let tarefa of tarefasRealizar$ | async"
     [tarefa]="tarefa"
     [prioridades]="prioridades" 
     (performTarefa)="onPerformTarefa($event)" 
@@ -14,6 +16,19 @@
     [matMenuTriggerFor]="menu"
     [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
   </app-tarefa-item>
+
+  <mat-divider></mat-divider>
+  <h2 mat-subheader style="background-color: rgb(219, 229, 243)">TAREFAS CONCLUÍDAS</h2>
+
+  <app-tarefa-item *ngFor="let tarefa of tarefasConcluidas$ | async"
+    [tarefa]="tarefa"
+    [prioridades]="prioridades" 
+    (performTarefa)="onPerformTarefa($event)" 
+    (selectTarefa)="selectTarefa=$event"
+    [matMenuTriggerFor]="menu"
+    [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
+  </app-tarefa-item>
+  
 </mat-nav-list>
 
 <mat-menu #menu="matMenu" overlapTrigger="false">

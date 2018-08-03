@@ -10,8 +10,8 @@ import { Prioridade } from '../models/prioridade.model';
 })
 export class TarefaItemComponent implements OnInit {
 
-  descricao: string = ''
-  prioridadeColor: string = 'black'
+  descricao: string = '';
+  prioridadeColor: string = 'black';
 
   ngOnInit(): void {
     this.descricao = this.prioridades.find(x => x.value == this.tarefa.prioridade).descricao
