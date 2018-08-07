@@ -1,0 +1,22 @@
+<div class="example-container">
+  <mat-card class="center">
+    <h3>Faça o Login</h3>
+
+    <mat-form-field class="w80">
+      <input [(ngModel)]="usuario.nome" matInput id="usuario" type="text" placeholder="Usuário">
+    </mat-form-field>
+
+    <mat-form-field class="w80">
+      <input [(ngModel)]="usuario.senha" matInput placeholder="Entre com a sua senha" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+
+    <button 
+      mat-raised-button
+      (click)="fazerLogin()"
+      type="submit" 
+      color="primary">Login
+    </button>
+
+  </mat-card>
+</div>

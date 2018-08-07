@@ -21,11 +21,14 @@ import {
   MatMenuModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatCardModule,
 } from "@angular/material";
 import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
 import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaDialogComponent } from './tarefa-dialog/tarefa-dialog.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
     TarefaItemComponent,
     TarefaListComponent,
     TarefaDialogComponent,
-    BarraSuperiorComponent
+    BarraSuperiorComponent,
+    AuthenticationComponent,
+    LoginComponent
   ],
   entryComponents: [
     TarefaDialogComponent
@@ -54,7 +59,8 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

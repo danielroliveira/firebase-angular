@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFirestore, 
+import { 
+  AngularFirestore, 
   AngularFirestoreCollection, 
-  CollectionReference } from '../../node_modules/angularfire2/firestore';
+  CollectionReference 
+} from '../../node_modules/angularfire2/firestore';
   
   import { Tarefa } from './models/tarefa.model';
   import { Prioridade } from './models/prioridade.model';
+import { map } from '../../node_modules/rxjs/operators';
   //import { Observable } from '../../node_modules/rxjs';
 
 @Injectable({
@@ -80,6 +83,10 @@ export class TarefaService {
       {value: 3, descricao: 'Pra Depois...'}
     ];
 
+  }
+
+  autenticar(user: string, senha: string) {
+    this.db
   }
 
 }

@@ -1,7 +1,7 @@
 import { Tarefa } from './../models/tarefa.model';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs';
-import { take } from '../../../node_modules/rxjs/operators'
+import { take, map } from '../../../node_modules/rxjs/operators'
 
 import { MatDialog, MatDialogConfig } from '../../../node_modules/@angular/material';
 import { TarefaDialogComponent } from '../tarefa-dialog/tarefa-dialog.component';
@@ -16,7 +16,6 @@ import { Prioridade } from '../models/prioridade.model';
 })
 export class TarefaListComponent implements OnInit {
 
-  //tarefas$: Observable<Tarefa[]>;
   tarefasRealizar$: Observable<Tarefa[]>;
   tarefasConcluidas$: Observable<Tarefa[]>;
   selectedTarefa: Tarefa;
@@ -29,9 +28,10 @@ export class TarefaListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.tarefasRealizar$ = this.tarefaService.tarefasRealizar.valueChanges()
+  
+    this.tarefasRealizar$ = this.tarefaService.tarefasRealizar.valueChanges();
     this.tarefasConcluidas$ = this.tarefaService.tarefasConcluidas.valueChanges()
-
+    
     //desliga o spinner
     this.tarefasConcluidas$
       .pipe(take(1)) // apenas o take 1

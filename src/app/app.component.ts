@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { resolveTiming } from '../../node_modules/@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-root',
