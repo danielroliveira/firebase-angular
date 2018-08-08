@@ -1,9 +1,12 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
-import { FormsModule } from "../../node_modules/@angular/forms";
+import { RouterModule } from "../../node_modules/@angular/router";
+import { rootRouterConfig } from './app.routes';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -45,8 +48,11 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     FormsModule,
     MatToolbarModule,
     MatSlideToggleModule,

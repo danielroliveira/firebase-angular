@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
   hide = true;
-  usuario: Usuario = {nome: "", senha: ""};
+  usuario = new Usuario
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -33,8 +33,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  fazerLogin(){
-    this.authService.fazerLogin(this.usuario)
+  // fazerLogin(){
+  //   this.authService.fazerLogin(this.usuario)
+  // }
+
+  tryLogin(){
+    this.authService.doLogin(this.usuario)
+    .then(res => {
+      this.router.navigate(['/tarefas']);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    })
   }
 
 }
