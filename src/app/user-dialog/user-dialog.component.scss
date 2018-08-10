@@ -1,0 +1,15 @@
+h3, button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-dialog-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-icon {
+    padding-right: 0.3vw;
+}

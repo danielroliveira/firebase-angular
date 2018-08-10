@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     .then(res => {
       this.router.navigate(['/tarefas']);
     }, err => {
-      console.log(err);
+      //console.log(err);
       this.errorMessage = err.message;
     })
   }

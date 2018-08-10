@@ -9,4 +9,24 @@
   <span class="fill-remaining-space"></span>
   <span class="texto-menor">Daniel e Gissela</span>
 
+  <mat-menu #appMenu="matMenu" overlapTrigger="false">
+
+    <button mat-menu-item (click)="revelaUsuario()">      
+      <mat-icon>account_circle</mat-icon>
+      <span>Usuário</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item (click)="fazerLogOut()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+    
+  </mat-menu>
+  
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
 </mat-toolbar>

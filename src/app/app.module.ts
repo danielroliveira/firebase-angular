@@ -30,8 +30,8 @@ import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
 import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaDialogComponent } from './tarefa-dialog/tarefa-dialog.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { LoginComponent } from './login/login.component';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +40,12 @@ import { LoginComponent } from './login/login.component';
     TarefaListComponent,
     TarefaDialogComponent,
     BarraSuperiorComponent,
-    AuthenticationComponent,
-    LoginComponent
+    LoginComponent,
+    UserDialogComponent
   ],
   entryComponents: [
-    TarefaDialogComponent
+    TarefaDialogComponent,
+    UserDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,

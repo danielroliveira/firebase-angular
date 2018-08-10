@@ -4,9 +4,6 @@ export class Usuario {
     senha: string;
 
     constructor(){
-        this.email = "";
-        this.nome = "";
-        this.senha = "";
     }
 
 }

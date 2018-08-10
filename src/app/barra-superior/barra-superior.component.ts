@@ -1,48 +1,50 @@
+import { Router } from '@angular/router';
 import { 
   Component, 
-  OnInit, 
-  HostListener, 
-  Inject, 
   ElementRef,
-  AfterViewInit,
   ViewChild,
   Output,
   EventEmitter
 } from '@angular/core';
-//import { DOCUMENT } from '../../../node_modules/@angular/platform-browser';
+
+import { MatDialog, MatDialogConfig  } from '@angular/material';
+
+import { AuthService } from '../login/auth.service';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { Usuario } from '../models/usuario.model';
 
 @Component({
   selector: 'app-barra-superior',
   templateUrl: './barra-superior.component.html',
   styleUrls: ['./barra-superior.component.scss']
 })
-export class BarraSuperiorComponent implements OnInit, AfterViewInit {
+export class BarraSuperiorComponent {
    
   navIsFixed: boolean = true;
   @Output() navHeight = new EventEmitter<number>();
   @ViewChild('barraSuperior', {read: ElementRef}) barraSuperior: ElementRef;
   
   constructor(
-    // @Inject(DOCUMENT) private document: Document
+    private authService: AuthService,
+    private router: Router,
+    private dialog: MatDialog
   ) { }
-  
-  ngAfterViewInit(): void {
-    // envia o height da barra superior para o app-component
-    this.navHeight.emit(this.barraSuperior.nativeElement.clientHeight)
+
+  fazerLogOut(){
+    this.authService.doLogout();
+    this.router.navigate(['/login']);
   }
 
-  ngOnInit() {
-  }
+  revelaUsuario(){
+    const usuario = new Usuario;
 
-  @HostListener('window:scroll', []) onWindowScroll() {
-    //console.log(this.document.documentElement.scrollTop + ' ' + this.navHeight )
-    
-    // if (this.document.documentElement.scrollTop > this.navHeight) {
-    //   this.navIsFixed = true
-    // } else if (this.navIsFixed) {
-    //   this.navIsFixed = false
-    // }
+    this.authService.getCurrentUser().then(res=> {
+      usuario.email = res.email;
+      //console.log(res)
+    });
 
+    const config: MatDialogConfig<any> = (usuario) ? { data: { usuario } } : null;
+    this.dialog.open(UserDialogComponent, config);
   }
 
 }

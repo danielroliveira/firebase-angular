@@ -11,29 +11,30 @@ import { Usuario } from './../models/usuario.model';
 })
 export class AuthService {
 
-  private usuarioAutenticado: boolean = false;
+  private _usuarioAutenticado: boolean = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
-  constructor(public afAuth: AngularFireAuth) { }
-
-  // fazerLogin(usuario: Usuario) {
-  //   if(usuario.nome === 'daniel' && usuario.senha === '1234') {
-  //     this.usuarioAutenticado = true
-  //   } else {
-  //     this.usuarioAutenticado = false
-  //   }
-  // }
+  constructor(private afAuth: AngularFireAuth) { }
 
   doLogin(usuario: Usuario){
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(usuario.email, usuario.senha)
       .then(res => {
-        // this.usuarioAutenticado = true;
-        // this.mostrarMenuEmitter.emit(true);
+        this._usuarioAutenticado = true;
+        this.mostrarMenuEmitter.emit(true);
         resolve(res);
-      }, err => reject(err))
+      }, err => {
+        this._usuarioAutenticado = false;
+        this.mostrarMenuEmitter.emit(false);
+        reject(err);
+      })
     })
   }
+
+  // verificaUser(){
+  //   console.log('verificasuser')
+  //   console.log(firebase.auth().currentUser.displayName)
+  // }
 
   doLogout(){
     return new Promise((resolve, reject) => {
@@ -45,6 +46,22 @@ export class AuthService {
         reject();
       }
     });
+  }
+
+  usuarioAutenticado(){
+    return this._usuarioAutenticado
+  }
+
+  getCurrentUser(){
+    return new Promise<any>((resolve, reject) => {
+      var user = firebase.auth().onAuthStateChanged(function(user){
+        if (user) {
+          resolve(user);
+        } else {
+          reject('No user logged in');
+        }
+      })
+    })
   }
 
 }

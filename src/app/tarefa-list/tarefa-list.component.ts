@@ -1,7 +1,7 @@
 import { Tarefa } from './../models/tarefa.model';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs';
-import { take, map } from '../../../node_modules/rxjs/operators'
+import { take } from '../../../node_modules/rxjs/operators'
 
 import { MatDialog, MatDialogConfig } from '../../../node_modules/@angular/material';
 import { TarefaDialogComponent } from '../tarefa-dialog/tarefa-dialog.component';
