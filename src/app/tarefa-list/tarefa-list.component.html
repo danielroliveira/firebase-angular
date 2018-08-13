@@ -1,81 +1,85 @@
-<app-barra-superior></app-barra-superior>  
+<div class="container">
 
-<mat-spinner 
-  class="sppiner" 
-  diameter="50" 
-  strokeWidth="3" 
-  *ngIf="loading">
-</mat-spinner>
+  <app-barra-superior class="fixed"></app-barra-superior>  
 
-<mat-nav-list class="listagem">
+  <mat-spinner 
+    class="sppiner" 
+    diameter="50" 
+    strokeWidth="3" 
+    *ngIf="loading">
+  </mat-spinner>
 
-  <div *ngFor="let tarefa of tarefasRealizar$ | async; let first = first">
+  <mat-nav-list class="listagem">
 
-    <h2 mat-subheader *ngIf="first"
-      style="background-color: rgb(219, 229, 243)">
-      TAREFAS A FAZER
-    </h2>
-    <mat-divider></mat-divider>
-    
-    <app-tarefa-item
-      [tarefa]="tarefa"
-      [prioridades]="prioridades" 
-      (performTarefa)="onPerformTarefa($event)" 
-      (selectTarefa)="selectTarefa=$event"
-      [matMenuTriggerFor]="menu"
-      [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
-    </app-tarefa-item>
-  </div>
+    <div *ngFor="let tarefa of tarefasRealizar$ | async; let first = first">
 
-  <!-- <mat-divider></mat-divider> -->
-
-  <div *ngFor="let tarefa of tarefasConcluidas$ | async as quant; let first = first">
-
-    <h2 mat-subheader *ngIf="first"
-      style="background-color: rgb(219, 229, 243)">
-      TAREFAS CONCLUÍDAS
-    </h2>
-        
-    <app-tarefa-item 
-      [tarefa]="tarefa"
-      [prioridades]="prioridades"
-      (performTarefa)="onPerformTarefa($event)" 
-      (selectTarefa)="selectTarefa=$event"
-      [matMenuTriggerFor]="menu"
-      [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
-    </app-tarefa-item>
+      <h2 mat-subheader *ngIf="first"
+        style="background-color: rgb(219, 229, 243)">
+        TAREFAS A FAZER
+      </h2>
+      <mat-divider></mat-divider>
       
-  </div>
-</mat-nav-list>
+      <app-tarefa-item
+        [tarefa]="tarefa"
+        [prioridades]="prioridades" 
+        (performTarefa)="onPerformTarefa($event)" 
+        (selectTarefa)="selectTarefa=$event"
+        [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
+      </app-tarefa-item>
+    </div>
+
+    <!-- <mat-divider></mat-divider> -->
+
+    <div *ngFor="let tarefa of tarefasConcluidas$ | async as quant; let first = first">
+
+      <h2 mat-subheader *ngIf="first"
+        style="background-color: rgb(219, 229, 243)">
+        TAREFAS CONCLUÍDAS
+      </h2>
+          
+      <app-tarefa-item 
+        [tarefa]="tarefa"
+        [prioridades]="prioridades"
+        (performTarefa)="onPerformTarefa($event)" 
+        (selectTarefa)="selectTarefa=$event"
+        [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
+      </app-tarefa-item>
+        
+    </div>
+  </mat-nav-list>
 
 
-<mat-menu #menu="matMenu" overlapTrigger="false">
-  <ng-template matMenuContent let-tarefa="tarefaToUpdateOrDelete">
+  <mat-menu #menu="matMenu" overlapTrigger="false">
+    <ng-template matMenuContent let-tarefa="tarefaToUpdateOrDelete">
 
-    <button mat-menu-item (click)="showDialog(tarefa)">
-      <mat-icon>edit</mat-icon>
-      <span>Editar</span>
-    </button>
-
-    <button mat-menu-item (click)="onDelete(tarefa)">
-      <mat-icon>delete</mat-icon>
-      <span>Remover</span>
-    </button>
-
-    <mat-divider></mat-divider>
-
-    <button mat-menu-item [matMenuTriggerFor]="itensPrioridade">Prioridade</button>
-
-    <mat-menu #itensPrioridade="matMenu">
-      <button mat-menu-item
-        (click)="alteraPrioridade(prioridade.value, tarefa)"
-        *ngFor="let prioridade of prioridades">{{ prioridade.descricao }}
+      <button mat-menu-item (click)="showDialog(tarefa)">
+        <mat-icon>edit</mat-icon>
+        <span>Editar</span>
       </button>
-    </mat-menu>
 
-  </ng-template>
-</mat-menu>
+      <button mat-menu-item (click)="onDelete(tarefa)">
+        <mat-icon>delete</mat-icon>
+        <span>Remover</span>
+      </button>
 
-<button mat-fab class="fab-botton-right" (click)="showDialog()">
-  <mat-icon>add</mat-icon>
-</button>
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item [matMenuTriggerFor]="itensPrioridade">Prioridade</button>
+
+      <mat-menu #itensPrioridade="matMenu">
+        <button mat-menu-item
+          (click)="alteraPrioridade(prioridade.value, tarefa)"
+          *ngFor="let prioridade of prioridades">{{ prioridade.descricao }}
+        </button>
+      </mat-menu>
+
+    </ng-template>
+  </mat-menu>
+
+  <button mat-fab class="fab-botton-right" (click)="showDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

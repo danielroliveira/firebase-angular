@@ -9,30 +9,37 @@
     <mat-card class="example-container center">
       <h3>Faça o Login</h3>
 
-      <mat-form-field class="w80">
-        <input 
-          [(ngModel)]="usuario.email" 
-          matInput id="usuario" 
-          type="email" 
-          placeholder="Email">
-      </mat-form-field>
-
-      <mat-form-field class="w80">
-        <input 
-          [(ngModel)]="usuario.senha" 
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <mat-form-field class="w80">
+          <input 
+          formControlName="email"
           matInput 
-          placeholder="Entre com a sua senha" 
-          [type]="hide ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
+          id="email"
+          type="email"
+          placeholder="Email">
+          <mat-error *ngIf="loginForm.get('email').invalid">{{ getErrorMessage(loginForm.get('email')) }}</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="w80">
+          <input
+          formControlName="password"
+          matInput
+          id="password"
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Entre com a sua senha">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="loginForm.get('password').invalid">{{ getErrorMessage(loginForm.get('password')) }}</mat-error>
+        </mat-form-field>
+        
+        <button 
+        mat-raised-button
+        type="submit" 
+        color="primary">Login
+      </button>
       
-      <button 
-      mat-raised-button
-      (click)="tryLogin()"
-      type="submit" 
-      color="primary">Login
-    </button>
-    
+    </form>
+
     <p>
       <small class="error" style="color: red">{{errorMessage}}</small>
     </p>

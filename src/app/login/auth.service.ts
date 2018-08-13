@@ -18,7 +18,7 @@ export class AuthService {
 
   doLogin(usuario: Usuario){
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(usuario.email, usuario.senha)
+      firebase.auth().signInWithEmailAndPassword(usuario.email, usuario.password)
       .then(res => {
         this._usuarioAutenticado = true;
         this.mostrarMenuEmitter.emit(true);
@@ -31,18 +31,12 @@ export class AuthService {
     })
   }
 
-  // verificaUser(){
-  //   console.log('verificasuser')
-  //   console.log(firebase.auth().currentUser.displayName)
-  // }
-
   doLogout(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
         this.afAuth.auth.signOut()
         resolve();
-      }
-      else{
+      } else {
         reject();
       }
     });

@@ -26,12 +26,14 @@ import {
   MatSelectModule,
   MatCardModule,
 } from "@angular/material";
+
 import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
 import { TarefaListComponent } from './tarefa-list/tarefa-list.component';
 import { TarefaDialogComponent } from './tarefa-dialog/tarefa-dialog.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
 import { LoginComponent } from './login/login.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { SairDialogComponent } from './sair-dialog/sair-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +43,13 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
     TarefaDialogComponent,
     BarraSuperiorComponent,
     LoginComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    SairDialogComponent
   ],
   entryComponents: [
     TarefaDialogComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    SairDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,

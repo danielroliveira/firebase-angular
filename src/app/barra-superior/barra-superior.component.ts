@@ -11,6 +11,7 @@ import { MatDialog, MatDialogConfig  } from '@angular/material';
 
 import { AuthService } from '../login/auth.service';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { SairDialogComponent } from '../sair-dialog/sair-dialog.component';
 import { Usuario } from '../models/usuario.model';
 
 @Component({
@@ -45,6 +46,10 @@ export class BarraSuperiorComponent {
 
     const config: MatDialogConfig<any> = (usuario) ? { data: { usuario } } : null;
     this.dialog.open(UserDialogComponent, config);
+  }
+
+  sairDialog(){
+    this.dialog.open(SairDialogComponent);
   }
 
 }

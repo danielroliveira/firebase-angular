@@ -1,17 +1,51 @@
 <h3 mat-dialog-title>
   <mat-icon>account_circle</mat-icon>
-  USUÁRIO
+  ALTERAR SENHA
 </h3>
 
 <mat-dialog-content>
-  <p>{{ usuario.email }}</p>
-  <p>{{ usuario.senha }}</p>
-
+  <p>Usuário: 
+    <br> {{ usuario.email }}
+  </p>
 </mat-dialog-content>
 
+<div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  
+    <mat-form-field class="w80">
+      <input
+      formControlName="senhaAntiga"
+      matInput
+      id="senhaantiga"
+      [type]="hide ? 'password' : 'text'"
+      placeholder="Entre com a senha antiga">
+      <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="w80">
+      <input
+      formControlName="novaSenha"
+      matInput
+      id="novasenha"
+      [type]="hide ? 'password' : 'text'"
+      placeholder="Entre com a NOVA Senha">
+      <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+
+  </form>
+</div>
+
 <mat-dialog-actions>
+
+  <button mat-button>
+    <mat-icon style="font-size: 20px">how_to_reg</mat-icon>
+    <span>Alterar</span>
+  </button>
+
   <button mat-button mat-dialog-close>
     <mat-icon style="font-size: 20px">close</mat-icon>
-    <span>Fechar</span>
+    <span>Cancelar</span>
   </button>
+
 </mat-dialog-actions>

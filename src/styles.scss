@@ -27,7 +27,7 @@ flex: 1 1 auto;
 }
 
 .listagem {
-  padding-bottom: 7vh;
+  padding-bottom: 10vh;
 }
 
 .barraSuperior {
@@ -35,9 +35,9 @@ flex: 1 1 auto;
 }
 
 .fixed {
-    position: sticky;
-    top: 0;
     width: 100%;
+    position: sticky;
+    top: 0px;
     z-index: 999;
 }
 
