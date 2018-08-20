@@ -24,6 +24,7 @@
         [prioridades]="prioridades" 
         (performTarefa)="onPerformTarefa($event)" 
         (selectTarefa)="selectTarefa=$event"
+        (checkTarefa)="onCheckTarefa($event)"
         [matMenuTriggerFor]="menu"
         [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
       </app-tarefa-item>
@@ -37,6 +38,7 @@
         style="background-color: rgb(219, 229, 243)">
         TAREFAS CONCLUÍDAS
       </h2>
+      <mat-divider></mat-divider>
           
       <app-tarefa-item 
         [tarefa]="tarefa"
@@ -50,7 +52,7 @@
     </div>
   </mat-nav-list>
 
-
+  <!-- MENU DE EDICAO -->
   <mat-menu #menu="matMenu" overlapTrigger="false">
     <ng-template matMenuContent let-tarefa="tarefaToUpdateOrDelete">
 
@@ -78,8 +80,14 @@
     </ng-template>
   </mat-menu>
 
-  <button mat-fab class="fab-botton-right" (click)="showDialog()">
+  <!-- ADD BUTTON -->
+  <button mat-fab class="fab-botton-right buttonAdd" (click)="showDialog()">
     <mat-icon>add</mat-icon>
   </button>
+
+  <!-- BARRA INFERIOR -->
+  <app-barra-inferior 
+    [ngClass]="{'barraInferiorVisible':itensSelecionados.length > 0}">
+  </app-barra-inferior>
 
 </div>

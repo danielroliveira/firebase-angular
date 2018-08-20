@@ -1,13 +1,30 @@
 <mat-list-item (click)="executeAction('selectTarefa')">
 
-  <p matLine>{{ tarefa.titulo }}</p>
+  <div class="itens">
 
-  <span matLine class="tarefaItemDescricao" [style.color]="prioridadeColor">{{ descricao }}</span>
+    <div class="itemCheck">
+      <mat-checkbox (click)="executeAction('checkTarefa'); $event.stopPropagation()"></mat-checkbox>
+    </div>
+
+    <div class="itemTitulo">
+      <div>
+        <p>{{ tarefa.titulo }}</p>
+      </div>
+      
+      <div>
+        <span 
+          [style.color]="prioridadeColor">{{ descricao }}
+        </span>
+      </div>
+    </div>
     
-  <mat-slide-toggle
-    [checked]="tarefa.feito" 
-    (click)="executeAction('performTarefa'); $event.stopPropagation()">
-    
-  </mat-slide-toggle>
+    <div class="itemToggle">
+      <mat-slide-toggle 
+        [checked]="tarefa.feito" 
+        (click)="executeAction('performTarefa'); $event.stopPropagation()">
+      </mat-slide-toggle>
+    </div>
+
+  </div>
 
 </mat-list-item>

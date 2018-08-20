@@ -1,5 +1,5 @@
 import { Tarefa } from './../models/tarefa.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs';
 import { take } from '../../../node_modules/rxjs/operators'
 
@@ -21,6 +21,8 @@ export class TarefaListComponent implements OnInit {
   selectedTarefa: Tarefa;
   loading = true;
   prioridades: Prioridade[];
+
+  itensSelecionados: Tarefa[] = [];
 
   constructor(
     private tarefaService: TarefaService,
@@ -60,6 +62,20 @@ export class TarefaListComponent implements OnInit {
       this.tarefaService.update(tarefa);
     }
 
+  }
+
+  onCheckTarefa(tarefa: Tarefa) {
+    // procura se a tarefa já esta marcada
+    let item	=	this.itensSelecionados.find(
+      (t) => t.uid === tarefa.uid
+    );
+    // se não estiver marcada insere na lista
+    // se já estiver retira da lista
+    if (item) {
+      this.itensSelecionados.splice(this.itensSelecionados.indexOf(item), 1)
+    } else {
+      this.itensSelecionados.push(tarefa)
+    }
   }
 
 }

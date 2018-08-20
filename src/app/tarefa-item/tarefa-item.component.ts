@@ -41,6 +41,9 @@ export class TarefaItemComponent implements OnInit {
   // ao alterar o valor de tarefa feita boolean
   @Output() performTarefa = new EventEmitter<Tarefa>();
 
+  // ao marcar a tarefa com checkbox
+  @Output() checkTarefa = new EventEmitter<Tarefa>();
+
   executeAction(action: string): void {
     // if (action === 'select') {
     //   this.selectTarefa.emit(this.tarefa)

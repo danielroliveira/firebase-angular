@@ -3,3 +3,28 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.mat-subheader {
+    margin-top: 0px !important;
+}
+
+.listagem {
+    padding-top: 0px;
+    padding-bottom: 10vh;
+}
+
+app-barra-inferior {
+    //z-index: 999;
+    width: 100%;
+    position: fixed;
+    bottom: -100px;
+    transition: all 0.5s;
+}
+
+.barraInferiorVisible {
+    bottom: 0px;
+}
+
+.buttonAdd {
+    z-index: 999;
+}

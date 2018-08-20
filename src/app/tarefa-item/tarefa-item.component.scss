@@ -1,0 +1,33 @@
+.itemTitulo { 
+    flex: 1 1 0;
+}
+
+.itemCheck { 
+    width: 40px !important;
+}
+
+.itemToggle { 
+    width: 40px !important;
+}
+
+mat-slide-toggle {
+    float: right;
+}
+
+.itens {
+    display: flex !important;
+    //justify-content: space-between !important;
+    align-items: center;
+    width: 100%
+}
+
+div, p {
+    margin: 0;
+    padding: 0;
+}
+
+mat-list-item {
+    //width: 100%;
+    height:max-content !important;
+    padding: 5px 0px
+}

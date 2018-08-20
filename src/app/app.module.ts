@@ -25,6 +25,7 @@ import {
   MatProgressSpinnerModule,
   MatSelectModule,
   MatCardModule,
+  MatCheckboxModule,
 } from "@angular/material";
 
 import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
@@ -34,6 +35,7 @@ import { BarraSuperiorComponent } from './barra-superior/barra-superior.componen
 import { LoginComponent } from './login/login.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { SairDialogComponent } from './sair-dialog/sair-dialog.component';
+import { BarraInferiorComponent } from './barra-inferior/barra-inferior.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { SairDialogComponent } from './sair-dialog/sair-dialog.component';
     BarraSuperiorComponent,
     LoginComponent,
     UserDialogComponent,
-    SairDialogComponent
+    SairDialogComponent,
+    BarraInferiorComponent
   ],
   entryComponents: [
     TarefaDialogComponent,
@@ -71,7 +74,8 @@ import { SairDialogComponent } from './sair-dialog/sair-dialog.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule, 
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
