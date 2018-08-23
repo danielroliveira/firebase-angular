@@ -1,4 +1,4 @@
-h3, button {
+h2, button {
     display: flex;
     align-items: center !important;
     justify-content: center !important;
@@ -16,14 +16,4 @@ mat-dialog-actions {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-mat-icon {
-    padding-right: 0.3vw;
 }

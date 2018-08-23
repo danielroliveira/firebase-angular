@@ -1,8 +1,6 @@
 import { Router } from '@angular/router';
 import { 
   Component, 
-  ElementRef,
-  ViewChild,
   Output,
   EventEmitter
 } from '@angular/core';
@@ -11,7 +9,6 @@ import { MatDialog, MatDialogConfig  } from '@angular/material';
 
 import { AuthService } from '../login/auth.service';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
-import { SairDialogComponent } from '../sair-dialog/sair-dialog.component';
 import { Usuario } from '../models/usuario.model';
 
 @Component({
@@ -22,18 +19,17 @@ import { Usuario } from '../models/usuario.model';
 export class BarraSuperiorComponent {
    
   navIsFixed: boolean = true;
-  @Output() navHeight = new EventEmitter<number>();
-  @ViewChild('barraSuperior', {read: ElementRef}) barraSuperior: ElementRef;
   
   constructor(
     private authService: AuthService,
-    private router: Router,
     private dialog: MatDialog
   ) { }
 
+  // ao alterar o valor de tarefa feita boolean
+  @Output() LogOut = new EventEmitter();
+
   fazerLogOut(){
-    this.authService.doLogout();
-    this.router.navigate(['/login']);
+    this.LogOut.emit()
   }
 
   revelaUsuario(){
@@ -46,10 +42,6 @@ export class BarraSuperiorComponent {
 
     const config: MatDialogConfig<any> = (usuario) ? { data: { usuario } } : null;
     this.dialog.open(UserDialogComponent, config);
-  }
-
-  sairDialog(){
-    this.dialog.open(SairDialogComponent);
   }
 
 }

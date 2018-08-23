@@ -2,5 +2,6 @@ export interface Tarefa {
     uid?: string,
     titulo: string,
     prioridade: number,
-    feito?: boolean
+    feito?: boolean,
+    selecionada?: boolean
 }

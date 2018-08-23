@@ -1,6 +1,8 @@
 <div class="container">
 
-  <app-barra-superior class="fixed"></app-barra-superior>  
+  <app-barra-superior 
+    class="fixed" (LogOut)="fazerLogOut()">
+  </app-barra-superior>  
 
   <mat-spinner 
     class="sppiner" 
@@ -11,12 +13,15 @@
 
   <mat-nav-list class="listagem">
 
-    <div *ngFor="let tarefa of tarefasRealizar$ | async; let first = first">
+    <div *ngFor="let tarefa of tarefasRealizar; let first = first">
 
       <h2 mat-subheader *ngIf="first"
         style="background-color: rgb(219, 229, 243)">
-        TAREFAS A FAZER
+        <span>TAREFAS A FAZER</span>
+        <span class="fill-remaining-space"></span>
+        <span>T: {{ tarefasRealizar.length | number: '2.0' }}</span>
       </h2>
+
       <mat-divider></mat-divider>
       
       <app-tarefa-item
@@ -32,12 +37,15 @@
 
     <!-- <mat-divider></mat-divider> -->
 
-    <div *ngFor="let tarefa of tarefasConcluidas$ | async as quant; let first = first">
+    <div *ngFor="let tarefa of tarefasConcluidas; let first = first">
 
       <h2 mat-subheader *ngIf="first"
         style="background-color: rgb(219, 229, 243)">
-        TAREFAS CONCLUÍDAS
+        <span>TAREFAS CONCLUÍDAS</span>
+        <span class="fill-remaining-space"></span>
+        <span>T: {{ tarefasConcluidas.length | number: '2.0' }}</span>
       </h2>
+
       <mat-divider></mat-divider>
           
       <app-tarefa-item 
@@ -45,6 +53,7 @@
         [prioridades]="prioridades"
         (performTarefa)="onPerformTarefa($event)" 
         (selectTarefa)="selectTarefa=$event"
+        (checkTarefa)="onCheckTarefa($event)"
         [matMenuTriggerFor]="menu"
         [matMenuTriggerData]="{tarefaToUpdateOrDelete: tarefa}">
       </app-tarefa-item>
@@ -87,7 +96,11 @@
 
   <!-- BARRA INFERIOR -->
   <app-barra-inferior 
-    [ngClass]="{'barraInferiorVisible':itensSelecionados.length > 0}">
+    [ngClass]="{'barraInferiorVisible': showBarraInf}"
+    [barraType]="barraInfType"
+    (doConcluirSelect)="ConcluirSelect()"
+    (doAFazerSelect)="AFazerSelect()"
+    (doExcluirSelect)="ExcluirSelect()">
   </app-barra-inferior>
 
 </div>

@@ -34,8 +34,8 @@ import { TarefaDialogComponent } from './tarefa-dialog/tarefa-dialog.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
 import { LoginComponent } from './login/login.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { SairDialogComponent } from './sair-dialog/sair-dialog.component';
 import { BarraInferiorComponent } from './barra-inferior/barra-inferior.component';
+import { AcaoDialogComponent } from './acao-dialog/acao-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +46,13 @@ import { BarraInferiorComponent } from './barra-inferior/barra-inferior.componen
     BarraSuperiorComponent,
     LoginComponent,
     UserDialogComponent,
-    SairDialogComponent,
-    BarraInferiorComponent
+    BarraInferiorComponent,
+    AcaoDialogComponent
   ],
   entryComponents: [
     TarefaDialogComponent,
     UserDialogComponent,
-    SairDialogComponent
+    AcaoDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,

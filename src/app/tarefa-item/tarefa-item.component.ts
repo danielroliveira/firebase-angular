@@ -50,7 +50,7 @@ export class TarefaItemComponent implements OnInit {
     // }
     this[action].emit(this.tarefa);
   }
-  
+
   //descricao = this.prioridades.find(x => x.value == this.tarefa.prioridade)
 
 }

@@ -3,7 +3,11 @@
   <div class="itens">
 
     <div class="itemCheck">
-      <mat-checkbox (click)="executeAction('checkTarefa'); $event.stopPropagation()"></mat-checkbox>
+      <mat-checkbox
+        [(ngModel)]="tarefa.selecionada"
+        (click)="$event.stopPropagation()"
+        (change)="executeAction('checkTarefa'); ">
+      </mat-checkbox>
     </div>
 
     <div class="itemTitulo">

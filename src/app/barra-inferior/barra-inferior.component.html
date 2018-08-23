@@ -1,3 +1,30 @@
 <mat-toolbar>
-  <span>My Application</span>
+  <div>
+
+    <button 
+      class="btnConcluir"
+      *ngIf="barraType"
+      (click)="executeAction('doConcluirSelect')" 
+      mat-raised-button>
+      <mat-icon>done</mat-icon>
+    Concluir</button>
+
+    <button 
+      class="btnAFazer"
+      *ngIf="!barraType"
+      (click)="executeAction('doAFazerSelect')" 
+      mat-raised-button>
+      <mat-icon>reply</mat-icon>
+    A Fazer</button>
+
+    <button 
+      class="btnExcluir"
+      *ngIf="!barraType" 
+      (click)="executeAction('doExcluirSelect')" 
+      mat-raised-button>
+      <mat-icon>delete</mat-icon>
+    Remover</button>
+    
+  </div>
+  <!-- <span>My Application</span> -->
 </mat-toolbar>

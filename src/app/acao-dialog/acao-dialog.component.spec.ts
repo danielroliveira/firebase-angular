@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SairDialogComponent } from './sair-dialog.component';
+import { AcaoDialogComponent } from './acao-dialog.component';
 
-describe('SairDialogComponent', () => {
-  let component: SairDialogComponent;
-  let fixture: ComponentFixture<SairDialogComponent>;
+describe('AcaoDialogComponent', () => {
+  let component: AcaoDialogComponent;
+  let fixture: ComponentFixture<AcaoDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SairDialogComponent ]
+      declarations: [ AcaoDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SairDialogComponent);
+    fixture = TestBed.createComponent(AcaoDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
