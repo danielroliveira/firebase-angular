@@ -1,11 +1,10 @@
-import { Router } from '@angular/router';
 import { 
   Component, 
   Output,
   EventEmitter
 } from '@angular/core';
 
-import { MatDialog, MatDialogConfig  } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
 
 import { AuthService } from '../login/auth.service';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
@@ -22,7 +21,8 @@ export class BarraSuperiorComponent {
   
   constructor(
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   // ao alterar o valor de tarefa feita boolean
@@ -37,11 +37,39 @@ export class BarraSuperiorComponent {
 
     this.authService.getCurrentUser().then(res=> {
       usuario.email = res.email;
-      //console.log(res)
     });
 
     const config: MatDialogConfig<any> = (usuario) ? { data: { usuario } } : null;
-    this.dialog.open(UserDialogComponent, config);
+    const dialogRef = this.dialog.open(UserDialogComponent, config);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const resposta = this.authService
+          .verificaUsuarioSenha(usuario.email, result.senhaAntiga);
+        
+        resposta.then((data)=>{
+          if(data.resultado){
+            const alteracao = this.authService.changeCurrentUserPass(result.novaSenha)
+
+            alteracao.then(()=>{
+              this.showSnackBar('Senha alterada com sucesso!', false);
+            }).catch((data)=> {
+              this.showSnackBar('Senha não foi alterada... Dados incorretos!', true);
+            })
+          } else {
+            this.showSnackBar('Senha não foi alterada... Dados incorretos!', true);
+          }
+        })
+      }
+    });
+  }
+
+  showSnackBar(message: string, alert: boolean){
+    if (alert){
+      this.snackBar.open(message, 'OK', {duration: 2000, panelClass: 'snackBarAlert'})
+    } else {
+      this.snackBar.open(message, 'OK', {duration: 2000})
+    }
   }
 
 }

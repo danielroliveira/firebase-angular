@@ -26,6 +26,7 @@ import {
   MatSelectModule,
   MatCardModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from "@angular/material";
 
 import { TarefaItemComponent } from './tarefa-item/tarefa-item.component';
@@ -75,7 +76,8 @@ import { AcaoDialogComponent } from './acao-dialog/acao-dialog.component';
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
